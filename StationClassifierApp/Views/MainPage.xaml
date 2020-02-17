@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:StationCustomVisionApp"
+             mc:Ignorable="d"
+             x:Class="StationCustomVisionApp.MainPage">
+
+
+    <AbsoluteLayout>
+
+
+        <local:CameraView CaptureCommand="{Binding CaptureCommand}"
+                          AbsoluteLayout.LayoutBounds="0,0,370,370"
+                          AbsoluteLayout.LayoutFlags="None"
+                          WidthRequest="1"
+                          HeightRequest="1"/>
+
+        <!-- Jpg preview for debugging
+        <Image Source="{Binding Img}"
+               AbsoluteLayout.LayoutBounds="-130,0,620, 620"
+               AbsoluteLayout.LayoutFlags="None"
+               BackgroundColor="Black"/>-->
+        
+        <!--<Image Source="{Binding Img}"
+               AbsoluteLayout.LayoutBounds="0,0,150,150"
+               AbsoluteLayout.LayoutFlags="None"
+               BackgroundColor="Black"/>-->
+
+        <Switch IsToggled="{Binding Switch, Mode=TwoWay}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                AbsoluteLayout.LayoutBounds="1,0,0.2,0.1"
+                AbsoluteLayout.LayoutFlags="All"/>
+
+
+
+        <ScrollView Orientation="Vertical"
+                    AbsoluteLayout.LayoutBounds="0,1,1,0.4"
+                    AbsoluteLayout.LayoutFlags="All">
+            <StackLayout 
+                Orientation="Horizontal" 
+                Padding="5"
+                Spacing="5"
+                BackgroundColor="#AA000000">
+
+            
+                <Label Text="{Binding OutputLabel1}"
+                   TextColor="White"
+                   FontSize="Medium"
+                   FontFamily="monospace"/>
+
+                <!--<Label Text="{Binding OutputLabel2}"
+                   TextColor="White"
+                   FontSize="Medium"
+                   WidthRequest="70"
+                   FontFamily="monospace"/>
+                <Label Text="{Binding OutputLabel3}"
+                   TextColor="White"
+                   FontSize="Medium"
+                   WidthRequest="70"
+                   FontFamily="monospace"/>-->
+
+                <ListView ItemsSource="{Binding PoiList}"
+                          WidthRequest="100"
+                          RowHeight="30"
+                          SelectedItem="{Binding SelectedPoi, Mode=OneWayToSource}">
+                </ListView>
+
+            </StackLayout>
+        </ScrollView>
+
+
+    </AbsoluteLayout>
+
+
+</ContentPage>
